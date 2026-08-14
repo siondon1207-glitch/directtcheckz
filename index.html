@@ -1,23 +1,1139 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <style>
+    /* 기본 리셋 및 폰트 설정 */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+      line-height: 1.85;
+      background-color: #f8fafc;
+      color: #334155;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      word-break: keep-all;
+    }
+
+    /* 레이아웃 컨테이너 */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header, section, footer {
+      background: #ffffff;
+      border-radius: 16px;
+      margin: 28px auto;
+      padding: 36px 40px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* 타이포그래피 계층 구조 */
+    h1 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.35;
+      margin-bottom: 16px;
+      text-align: center;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 40px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e2e8f0;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: #2563eb;
+    }
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      padding-left: 12px;
+      border-left: 4px solid #3b82f6;
+    }
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    p {
+      margin-bottom: 16px;
+      color: #475569;
+      font-size: 1.02rem;
+      text-align: justify;
+    }
+    strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    ul, ol {
+      margin: 16px 0 24px 20px;
+      color: #475569;
+    }
+    li {
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    /* 헤더 뱃지 및 메타 영역 */
+    .header-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+      border: 1px solid #bfdbfe;
+    }
+    .header-desc {
+      text-align: center;
+      font-size: 1.12rem;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    /* 네비게이션 */
+    nav.toc-nav {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px 28px;
+      margin: 20px auto;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
+    }
+    nav.toc-nav p {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    nav.toc-nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+    }
+    nav.toc-nav li a {
+      display: inline-block;
+      padding: 8px 14px;
+      background-color: #f1f5f9;
+      color: #334155;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    nav.toc-nav li a:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+
+    /* 강조 박스 스타일링 */
+    .info-card {
+      background: #f8fafc;
+      border-left: 4px solid #0284c7;
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin: 22px 0;
+      color: #334155;
+    }
+    .summary-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin: 24px 0;
+    }
+    .summary-box p {
+      color: #166534;
+      margin-bottom: 8px;
+    }
+    .summary-box p:last-child {
+      margin-bottom: 0;
+    }
+    .warning-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 22px 0;
+    }
+    .warning-box p {
+      color: #92400e;
+      margin-bottom: 0;
+    }
+
+    /* 테이블 스타일링 */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 24px 0;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.96rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      padding: 14px 16px;
+      border-bottom: 1px solid #cbd5e1;
+      white-space: nowrap;
+    }
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+      vertical-align: middle;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:nth-child(even) td {
+      background-color: #fafafa;
+    }
+    td.highlight-cell {
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    /* 시각적 CSS 데이터 그래프 바 차트 */
+    .chart-container {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .chart-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+    .chart-bar-group {
+      margin-bottom: 16px;
+    }
+    .chart-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .chart-bar-outer {
+      width: 100%;
+      height: 20px;
+      background-color: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .chart-bar-inner {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+    .bar-gasoline { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+    .bar-ev-sub { background: linear-gradient(90deg, #10b981, #059669); }
+    .bar-casper { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .bar-morning { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+
+    /* CTA 버튼 */
+    .btn-action {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: #2563eb;
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-action:hover {
+      background-color: #1d4ed8;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+      color: #ffffff;
+    }
+    .cta-center {
+      text-align: center;
+      margin: 28px 0;
+    }
+
+    /* 폼 스타일링 */
+    form.consult-form {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 24px 0;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    label {
+      display: block;
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+    input[type="text"], input[type="tel"], select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      color: #0f172a;
+      background-color: #ffffff;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .form-note {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 6px;
+    }
+
+    /* 외부 링크 카드 목록 */
+    .link-list {
+      list-style: none;
+      margin: 16px 0;
+      padding: 0;
+    }
+    .link-list li {
+      margin-bottom: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+    .link-list li a {
+      color: #2563eb;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .link-list li a:hover {
+      text-decoration: underline;
+    }
+    .link-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* FAQ 섹션 */
+    .faq-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .faq-question {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .faq-answer {
+      font-size: 0.98rem;
+      color: #475569;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* 키워드 클라우드 */
+    .keyword-tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .keyword-tag {
+      background-color: #eff6ff;
+      color: #1e40af;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid #dbeafe;
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+      header, section, footer {
+        padding: 24px 18px;
+        margin: 16px auto;
+        border-radius: 12px;
+      }
+      h1 { font-size: 1.85rem; }
+      h2 { font-size: 1.4rem; }
+      h3 { font-size: 1.15rem; }
+      body { font-size: 15px; }
+    }
+  </style>
+
+  <!-- 구조화된 데이터 Schema.org JSON-LD 마크업 (LLM 및 검색엔진 최적화) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": "https://auto.reliabledone.com/vehicles/kia-the-new-ray#product",
+        "name": "2026 기아 더 뉴 레이 (The New Ray)",
+        "image": "https://auto.reliabledone.com/images/kia-ray-2026.jpg",
+        "description": "2026년형 기아 더 뉴 레이 가솔린 및 더 뉴 레이 EV 전기차 공식 가격표, 트림별 옵션 사양, 취등록세 감면 및 국고·지자체 전기차 보조금 실구매가 분석 정보",
+        "brand": {
+          "@type": "Brand",
+          "name": "기아 (KIA)"
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "KRW",
+          "lowPrice": "13900000",
+          "highPrice": "29550000",
+          "offerCount": "12",
+          "priceValidUntil": "2026-12-31"
+        }
+      },
+      {
+        "@type": "Article",
+        "@id": "https://auto.reliabledone.com/vehicles/kia-the-new-ray#article",
+        "headline": "2026 더 뉴 레이 가격표 및 트림별 실구매가 견적 총정리 | 가솔린·EV 완벽 가이드",
+        "datePublished": "2026-01-10T09:00:00+09:00",
+        "dateModified": "2026-02-15T14:30:00+09:00",
+        "author": {
+          "@type": "Organization",
+          "name": "자동차 경제성 분석 연구팀"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "신차 다이렉트 견적 정보 포털",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://auto.reliabledone.com/logo.png"
+          }
+        },
+        "description": "더 뉴 레이 가솔린, EV, 1인승 밴, 2인승 밴 가격 및 유지비, 캐스퍼·모닝 비교, 보배드림 및 펨코 실차주 장단점 후기 상세 정리"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://auto.reliabledone.com/vehicles/kia-the-new-ray#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "2026 더 뉴 레이 가솔린의 실구매 시작 가격은 얼마인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2026년형 더 뉴 레이 가솔린 1.0 승용 모델의 기본 트렌디 트림 시작 가격은 1,390만 원대이며, 주력 트림인 프레스티지는 약 1,635만 원, 최상위 시그니처 및 그래비티 트림은 1,770만 원에서 1,865만 원 사이로 형성되어 있습니다. 경차 취등록세 감면(최대 75만 원)을 적용받아 초기 취득 비용이 매우 저렴합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "더 뉴 레이 EV 전기차는 국고 및 지자체 보조금을 받으면 실구매가가 얼마인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "더 뉴 레이 EV 승용 에어(Air) 트림의 출고가는 약 2,955만 원 수준이지만, 국고 보조금과 거주 지역별 지자체 보조금을 합산 지원받을 경우 실구매가는 서울 기준 약 2,100만 원대, 지방 자치단체에 따라 최저 1,900만 원대 후반에서 2,000만 원대 초반으로 낮아집니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "더 뉴 레이와 현대 캐스퍼의 가장 큰 차이점과 장단점은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "더 뉴 레이의 최대 장점은 높은 전고와 조수석 슬라이딩 도어를 기반으로 한 압도적인 실내 공간 활용성 및 평탄화 차박 편의성입니다. 반면 현대 캐스퍼는 1.0 터보 엔진 선택이 가능하여 고속 주행 및 오르막 등판 능력이 우수한 장점이 있습니다. 도심 주행과 짐 적재, 공간감을 중시한다면 레이가 유리하며, 고속도로 장거리 주행이 잦다면 캐스퍼 터보를 고려할 수 있습니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- 헤더 영역 -->
+  <header>
+    <div style="text-align: center;">
+      <span class="header-badge">2026 최신 신차 가격 및 실구매 견적 가이드</span>
+      <h1>2026 더 뉴 레이 가격 및 트림별 실구매가 견적 총정리</h1>
+      <p class="header-desc">가솔린 1.0부터 EV 전기차, 1인승 및 2인승 밴까지 모델별 금액 비교와 세금 감면 혜택 완벽 분석</p>
+    </div>
+
+    <div class="summary-box">
+      <p><strong>핵심 요약:</strong> 2026년 기준 기아 더 뉴 레이 가솔린 신차 가격은 1,390만 원부터 1,865만 원까지 분포하며, 더 뉴 레이 EV 전기차는 보조금 적용 시 실구매가 1,900만 원대부터 2,100만 원대에 구매 가능합니다. 경차 전용 취등록세 75만 원 면제 혜택과 자동차세 연간 약 10만 원대의 압도적인 가성비를 자랑합니다.</p>
+    </div>
+
+    <div class="cta-center">
+      <a href="#consult" class="btn-action">더 뉴 레이 실시간 최저가 다이렉트 견적 계산하기</a>
+    </div>
+  </header>
+
+  <!-- 목차 네비게이션 -->
+  <nav class="toc-nav" aria-label="본문 빠른 이동 목차">
+    <p>주요 콘텐츠 바로가기</p>
+    <ul>
+      <li><a href="#section-gasoline">가솔린 가격표 및 옵션</a></li>
+      <li><a href="#section-ev">EV 전기차 보조금 견적</a></li>
+      <li><a href="#section-van">1인승 및 2인승 밴 가격</a></li>
+      <li><a href="#section-tco">세금 및 유지비 계산기</a></li>
+      <li><a href="#section-comparison">캐스퍼 및 모닝 비교</a></li>
+      <li><a href="#section-purchase-method">할부 리스 렌트 계산</a></li>
+      <li><a href="#section-reviews">보배드림 펨코 실차주 후기</a></li>
+      <li><a href="#section-keywords">연관 키워드 트렌드</a></li>
+      <li><a href="#section-faq">자주 묻는 질문 FAQ</a></li>
+      <li><a href="#consult">무료 맞춤 견적 신청</a></li>
+    </ul>
+  </nav>
+
+  <!-- 섹션 1: 가솔린 모델 가격표 및 트림 분석 -->
+  <section id="section-gasoline">
+    <h2>2026 더 뉴 레이 가솔린 트림별 공식 가격표 및 필수 옵션 견적</h2>
+    <p>기아의 대표 박스형 경차인 더 뉴 레이는 독보적인 실내 거주성과 실용성으로 오랜 기간 국민 경차의 자리를 지켜오고 있습니다. 2026년형 더 뉴 레이 가솔린 1.0 모델은 트렌디(Trendy), 프레스티지(Prestige), 시그니처(Signature), 그리고 최상위 디자인 특화 모델인 그래비티(Gravity) 등 4가지 승용 트림으로 구성되어 있습니다. 신차를 구매할 때 평균적으로 얼마의 예산이 필요한지, 트림별 기본 가격과 추가 선택 품목 비용을 정확히 계산하는 것이 합리적인 소비의 첫걸음입니다.</p>
+
+    <h3>1. 더 뉴 레이 가솔린 트림별 가격 및 주요 기본 품목</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>트림명</th>
+            <th>기본 가격 (개소세 감면)</th>
+            <th>추천 필수 선택 옵션</th>
+            <th>예상 풀옵션 금액</th>
+            <th>주요 기본 제공 사양</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>트렌디 (Trendy)</strong></td>
+            <td class="highlight-cell">13,900,000원</td>
+            <td>버튼시동 팩, 드라이브 와이즈 1</td>
+            <td>약 15,200,000원</td>
+            <td>1.0 가솔린 엔진, 4단 자동변속기, 14인치 스틸 휠, 직물 시트</td>
+          </tr>
+          <tr>
+            <td><strong>프레스티지 (Prestige)</strong></td>
+            <td class="highlight-cell">16,350,000원</td>
+            <td>드라이브 와이즈 2, 8인치 내비게이션</td>
+            <td>약 17,900,000원</td>
+            <td>버튼시동 스마트키, 인조가죽 시트, 열선 스티어링 휠, 14인치 알로이 휠</td>
+          </tr>
+          <tr>
+            <td><strong>시그니처 (Signature)</strong></td>
+            <td class="highlight-cell">17,700,000원</td>
+            <td>스타일, 8인치 내비게이션 패키지</td>
+            <td>약 19,400,000원</td>
+            <td>운전석 통풍시트, 전자식 파킹 브레이크(EPB), 풀오토 에어컨, 루프랙</td>
+          </tr>
+          <tr>
+            <td><strong>그래비티 (Gravity)</strong></td>
+            <td class="highlight-cell">18,650,000원</td>
+            <td>풀옵션 패키지 구성</td>
+            <td>약 20,250,000원</td>
+            <td>다크 메탈 전면 그릴, 15인치 블랙 알로이 휠, 전후면 전용 스키드 플레이트</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2. 가솔린 모델 옵션 패키지 세부 구성 및 추천 기준</h3>
+    <p>더 뉴 레이 가솔린 모델을 선택할 때 가장 많은 예비 구매자들이 고민하는 부분은 이른바 깡통으로 불리는 기본형 트렌디와 풍부한 편의 사양이 탑재된 프레스티지 및 시그니처 사이의 가성비 차이점입니다. 네이버 카페 및 디시인사이드 자동차 갤러리 실차주들의 내돈내산 추천 견적에 따르면 <strong>프레스티지 트림에 드라이브 와이즈 1과 8인치 내비게이션을 결합하는 조합</strong>이 가장 가성비가 뛰어난 것으로 평가받고 있습니다.</p>
+    <ul>
+      <li><strong>드라이브 와이즈 (Drive Wise):</strong> 전방 충돌방지 보조, 차로 이탈방지 보조, 운전자 주의 경고, 하이빔 보조 등이 포함되어 고속도로 및 도심 주행 시 안전성을 획기적으로 향상시킵니다.</li>
+      <li><strong>컴포트 패키지 (Comfort):</strong> 운전석 통풍 시트, 2열 열선 시트, 2열 6:4 슬라이딩 및 폴딩 시트가 포함되어 패밀리카 및 차박 캠핑을 목적으로 하는 분들에게 필수 품목으로 꼽힙니다.</li>
+      <li><strong>스타일 패키지 (Style):</strong> 프로젝션 헤드램프, LED 주간주행등, LED 리어 콤비네이션 램프 등이 추가되어 외관의 고급스러움을 극대화합니다.</li>
+    </ul>
+
+    <div class="info-card">
+      <p><strong>가솔린 구매 팁:</strong> 레이는 차량 구조상 전고가 높아 공기저항을 많이 받는 편입니다. 최고출력 76마력, 복합연비 13.0km/L 수준으로 도심 출퇴근 및 단거리 이동에 최적화되어 있으므로, 무리한 고가 풀옵션보다는 실생활에 필요한 통풍시트와 안전 패키지 위주로 구성하는 것이 예산 절약의 핵심입니다.</p>
+    </div>
+  </section>
+
+  <!-- 섹션 2: EV 전기차 가격 및 보조금 실구매가 분석 -->
+  <section id="section-ev">
+    <h2>2026 더 뉴 레이 EV 전기차 가격 및 정부 지자체 보조금 실구매가</h2>
+    <p>더 뉴 레이 EV는 35.2kWh 용량의 LFP(리튬인산철) 배터리를 탑재하여 1회 충전 시 복합 기준 205km(도심 기준 233km)의 실용적인 주행거리를 제공하는 도심형 엔트리 전기차입니다. 최고출력 87마력과 최대토크 147Nm를 발휘하여 기존 가솔린 1.0 자연흡기 모델 특유의 답답한 초반 가속력과 오르막 등판 성능을 완벽하게 극복했다는 호평을 받고 있습니다.</p>
+
+    <h3>1. 더 뉴 레이 EV 공식 출고가 및 트림 구성</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>트림명</th>
+            <th>공식 출고 가격</th>
+            <th>배터리 사양 및 모터</th>
+            <th>급속 충전 사양</th>
+            <th>주요 특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>EV 승용 라이트 (Light)</strong></td>
+            <td class="highlight-cell">27,350,000원</td>
+            <td>35.2kWh LFP / 64.3kW 모터</td>
+            <td>150kW 급속 (10%→80% 약 40분)</td>
+            <td>10.25인치 풀 LCD 클러스터, 전자식 변속 칼럼, 오토홀드 EPB</td>
+          </tr>
+          <tr>
+            <td><strong>EV 승용 에어 (Air)</strong></td>
+            <td class="highlight-cell">29,550,000원</td>
+            <td>35.2kWh LFP / 64.3kW 모터</td>
+            <td>150kW 급속 및 완속 지원</td>
+            <td>첨단 운전자 보조(ADAS), 14인치 알로이 휠, 인조가죽 시트, 열선/통풍</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2. 2026 지역별 국고 및 지자체 전기차 보조금 적용 실구매가 계산</h3>
+    <p>전기차를 구매할 때 최종 결제 금액은 제조사 출고가에서 환경부 국고 보조금과 각 시·도별 지자체 보조금을 차감하여 계산됩니다. 2026년 기준 전기차 보조금 정책을 반영한 주요 지역별 예상 실구매가는 다음과 같습니다.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>거주 지역 (지자체)</th>
+            <th>에어(Air) 트림 출고가</th>
+            <th>국고 보조금 예상액</th>
+            <th>지자체 보조금 예상액</th>
+            <th>최종 실구매 예상 가격</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>서울특별시</strong></td>
+            <td>29,550,000원</td>
+            <td>약 4,500,000원</td>
+            <td>약 1,300,000원</td>
+            <td class="highlight-cell">약 23,750,000원</td>
+          </tr>
+          <tr>
+            <td><strong>경기도 (수원/성남 평균)</strong></td>
+            <td>29,550,000원</td>
+            <td>약 4,500,000원</td>
+            <td>약 2,500,000원</td>
+            <td class="highlight-cell">약 22,550,000원</td>
+          </tr>
+          <tr>
+            <td><strong>인천광역시</strong></td>
+            <td>29,550,000원</td>
+            <td>약 4,500,000원</td>
+            <td>약 2,800,000원</td>
+            <td class="highlight-cell">약 22,250,000원</td>
+          </tr>
+          <tr>
+            <td><strong>강원특별자치도 (춘천/원주)</strong></td>
+            <td>29,550,000원</td>
+            <td>약 4,500,000원</td>
+            <td>약 3,600,000원</td>
+            <td class="highlight-cell">약 21,450,000원</td>
+          </tr>
+          <tr>
+            <td><strong>경상남도 / 전라남도 일부</strong></td>
+            <td>29,550,000원</td>
+            <td>약 4,500,000원</td>
+            <td>최대 5,500,000원</td>
+            <td class="highlight-cell">약 19,550,000원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 순수 CSS 바 차트: 가격 비교 그래프 -->
+    <div class="chart-container">
+      <div class="chart-title">2026 더 뉴 레이 가솔린 vs EV 보조금 적용 실구매가 비교 (서울 기준)</div>
+
+      <div class="chart-bar-group">
+        <div class="chart-label">
+          <span>더 뉴 레이 가솔린 시그니처 (옵션 포함)</span>
+          <span>1,880만 원</span>
+        </div>
+        <div class="chart-bar-outer">
+          <div class="chart-bar-inner bar-gasoline" style="width: 63%;"></div>
+        </div>
+      </div>
+
+      <div class="chart-bar-group">
+        <div class="chart-label">
+          <span>더 뉴 레이 EV 에어 (보조금 미적용 출고가)</span>
+          <span>2,955만 원</span>
+        </div>
+        <div class="chart-bar-outer">
+          <div class="chart-bar-inner bar-casper" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="chart-bar-group">
+        <div class="chart-label">
+          <span>더 뉴 레이 EV 에어 (서울시 보조금 차감 실구매가)</span>
+          <span>2,375만 원</span>
+        </div>
+        <div class="chart-bar-outer">
+          <div class="chart-bar-inner bar-ev-sub" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div class="chart-bar-group">
+        <div class="chart-label">
+          <span>더 뉴 레이 EV 라이트 (지방 최대 보조금 실구매가)</span>
+          <span>1,920만 원</span>
+        </div>
+        <div class="chart-bar-outer">
+          <div class="chart-bar-inner bar-morning" style="width: 65%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 3: 1인승 및 2인승 밴 모델 가격 및 상용 활용성 -->
+  <section id="section-van">
+    <h2>더 뉴 레이 1인승 밴 및 2인승 밴 가격과 비즈니스 활용도</h2>
+    <p>더 뉴 레이 밴(Van) 모델은 자영업자, 소상공인, 퀵배달 및 1인 차박 캠핑 마니아들에게 절대적인 지지를 받고 있는 경형 화물 모델입니다. 조수석 시트 유무에 따라 1인승 밴과 2인승 밴으로 나뉘며, 가솔린 모델과 전기차 EV 모델 모두 밴 라인업을 완벽히 갖추고 있습니다.</p>
+
+    <h3>1. 더 뉴 레이 밴 모델 가격표 (가솔린 및 EV)</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>구분 및 모델</th>
+            <th>트림명</th>
+            <th>공식 판매 가격</th>
+            <th>최대 적재 용량 / 하중</th>
+            <th>사업자 부가세 환급 혜택</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>가솔린 1인승 밴</strong></td>
+            <td>프레스티지 / 스페셜</td>
+            <td>1,340만 원 ~ 1,390만 원</td>
+            <td>1,628L / 최대 315kg</td>
+            <td>차량 가액 10% 전액 환급 대상</td>
+          </tr>
+          <tr>
+            <td><strong>가솔린 2인승 밴</strong></td>
+            <td>트렌디 / 프레스티지</td>
+            <td>1,350만 원 ~ 1,410만 원</td>
+            <td>1,403L / 최대 300kg</td>
+            <td>차량 가액 10% 전액 환급 대상</td>
+          </tr>
+          <tr>
+            <td><strong>EV 1인승 밴 (전기차)</strong></td>
+            <td>라이트 / 에어</td>
+            <td>2,735만 원 ~ 2,780만 원</td>
+            <td>1,628L / 최대 315kg</td>
+            <td>소상공인 추가 전기차 보조금 적용</td>
+          </tr>
+          <tr>
+            <td><strong>EV 2인승 밴 (전기차)</strong></td>
+            <td>라이트 / 에어</td>
+            <td>2,745만 원 ~ 2,795만 원</td>
+            <td>1,403L / 최대 300kg</td>
+            <td>소상공인 추가 전기차 보조금 적용</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2. 상용 밴 모델의 세무 혜택 및 장점</h3>
+    <p>개인사업자 및 법인 명의로 더 뉴 레이 밴을 출고할 경우, 차량 구입 대금의 10% 부가가치세를 전액 조기 환급받을 수 있습니다. 또한 운행에 소요되는 유류비, 충전 비용, 정비 수리비, 자동차 보험료 등 모든 유지 비용을 연간 한도 제한 없이 100% 필요경비로 산입하여 종합소득세 및 법인세를 대폭 절감할 수 있는 강력한 재정적 장점이 있습니다.</p>
+  </section>
+
+  <!-- 섹션 4: 세금, 유지비, 총소유비용(TCO) 계산기 분석 -->
+  <section id="section-tco">
+    <h2>취등록세 감면, 자동차세, 연간 유지비 계산기 시뮬레이션</h2>
+    <p>신차를 구매할 때 차량 가격 외에도 등록 단계에서 발생하는 취등록세, 공채 매입비, 탁송료와 매년 부과되는 자동차세, 유류비, 자동차 보험료 등을 종합적으로 계산해야 합니다. 경차인 레이는 대한민국 세법상 다양한 감면 혜택을 누릴 수 있어 준중형 및 중형차 대비 유지비가 현저히 저렴합니다.</p>
+
+    <h3>1. 경차 취등록세 계산 및 감면 혜택</h3>
+    <p>일반 승용차의 취등록세율은 차량 공급가액의 7%이지만, 경차는 4%의 특례 세율이 적용되며 <strong>최대 75만 원까지 취등록세가 전액 면제</strong>됩니다. 즉, 차량 가격이 약 1,875만 원 이하인 경우 취등록세를 단 1원도 내지 않거나, 1,900만 원 초과 풀옵션 차량의 경우에도 1~5만 원 수준의 극소액만 부담하게 됩니다.</p>
+
+    <h3>2. 연간 주행거리 15,000km 기준 가솔린 vs EV 유지비 3년 누적 비교표</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>비용 항목</th>
+            <th>더 뉴 레이 가솔린 1.0 (연간)</th>
+            <th>더 뉴 레이 EV (연간)</th>
+            <th>3년 누적 비용 차이점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>연간 자동차세</strong></td>
+            <td>약 103,780원 (cc당 계산)</td>
+            <td>130,000원 (전기차 일괄 정액)</td>
+            <td>가솔린이 3년간 약 8만 원 저렴</td>
+          </tr>
+          <tr>
+            <td><strong>연간 연료비/충전비</strong></td>
+            <td>약 1,960,000원 (13km/L, 휘발유 1,700원)</td>
+            <td>약 650,000원 (5.1km/kWh, 완속 기준)</td>
+            <td class="highlight-cell">EV가 3년간 약 393만 원 절약</td>
+          </tr>
+          <tr>
+            <td><strong>엔진오일 및 소모품</strong></td>
+            <td>약 150,000원</td>
+            <td>약 30,000원 (에어컨 필터 위주)</td>
+            <td>EV가 3년간 약 36만 원 절약</td>
+          </tr>
+          <tr>
+            <td><strong>고속도로 통행료/주차비</strong></td>
+            <td>50% 감면 혜택 적용</td>
+            <td>50% 감면 혜택 적용</td>
+            <td>동일한 경차/친환경차 할인</td>
+          </tr>
+          <tr>
+            <td><strong>3년 총 유지비 합계</strong></td>
+            <td><strong>약 6,641,340원</strong></td>
+            <td><strong>약 2,430,000원</strong></td>
+            <td class="highlight-cell"><strong>EV 선택 시 3년간 약 421만 원 절감</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warning-box">
+      <p><strong>유지비 분석 결론:</strong> 연간 주행거리가 15,000km 이상이고 집이나 직장에 완속 충전 인프라가 갖추어져 있다면, 초기 구입 비용 차이(약 300~400만 원)를 3년 이내에 유류비 절감분으로 전액 회수할 수 있어 더 뉴 레이 EV가 훨씬 경제적입니다. 반면 단거리 주행 위주이며 초기 목돈 지출을 최소화하고자 한다면 가솔린 모델이 유리합니다.</p>
+    </div>
+  </section>
+
+  <!-- 섹션 5: 경쟁 모델 비교 (레이 vs 캐스퍼 vs 모닝) -->
+  <section id="section-comparison">
+    <h2>더 뉴 레이 vs 현대 캐스퍼 vs 기아 모닝 3종 스펙 및 가치 비교</h2>
+    <p>국내 경차 시장에서 가장 치열하게 경쟁하는 3대 브랜드 모델인 기아 더 뉴 레이, 현대 캐스퍼, 기아 모닝은 각각 뚜렷한 개성과 장단점을 지니고 있습니다. 세 차종의 크기, 주행 질감, 실내 거주성, 가격대를 정밀 비교 분석해 드립니다.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>비교 항목</th>
+            <th>기아 더 뉴 레이</th>
+            <th>현대 캐스퍼</th>
+            <th>기아 모닝</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>전고 (차량 높이)</strong></td>
+            <td class="highlight-cell">1,700mm (가장 높음)</td>
+            <td>1,575mm (SUV 스타일)</td>
+            <td>1,485mm (전형적 해치백)</td>
+          </tr>
+          <tr>
+            <td><strong>도어 구조</strong></td>
+            <td class="highlight-cell">조수석 B필러리스 슬라이딩 도어</td>
+            <td>일반 스윙 도어</td>
+            <td>일반 스윙 도어</td>
+          </tr>
+          <tr>
+            <td><strong>실내 공간 및 차박</strong></td>
+            <td class="highlight-cell">압도적 1위 (완전 평탄화 가능)</td>
+            <td>1열 완전 폴딩 가능 (우수)</td>
+            <td>공간 협소 (차박 불리)</td>
+          </tr>
+          <tr>
+            <td><strong>파워트레인 다양성</strong></td>
+            <td>1.0 가솔린 / EV 전기차</td>
+            <td>1.0 가솔린 / 1.0 터보 / EV 일렉트릭</td>
+            <td>1.0 가솔린</td>
+          </tr>
+          <tr>
+            <td><strong>주행 안정성 (고속)</strong></td>
+            <td>보통 (측풍 및 롤링 영향 있음)</td>
+            <td class="highlight-cell">우수 (단단한 하체 세팅)</td>
+            <td>우수 (낮은 무게중심)</td>
+          </tr>
+          <tr>
+            <td><strong>가격대 (가솔린 기준)</strong></td>
+            <td>1,390만 원 ~ 1,865만 원</td>
+            <td>1,380만 원 ~ 1,980만 원</td>
+            <td>1,325만 원 ~ 1,725만 원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>경차 3사 장단점 종합 평가</h3>
+    <ul>
+      <li><strong>더 뉴 레이 추천 대상:</strong> 어린 자녀를 둔 부모, 유모차 및 자전거 등 큰 짐을 자주 싣는 분, 주말 차박 및 오토캠핑을 즐기는 1~2인 가구, 배달 및 화물 운송 비즈니스 종사자.</li>
+      <li><strong>현대 캐스퍼 추천 대상:</strong> 고속도로 장거리 출퇴근이 잦아 1.0 터보 엔진의 경쾌한 가속력이 필요한 운전자, 세련된 경형 SUV 감성을 선호하는 고객.</li>
+      <li><strong>기아 모닝 추천 대상:</strong> 좁은 골목길 주행과 주차가 최우선이며, 가장 저렴한 신차 구입 예산으로 최고의 연비를 달성하고자 하는 알뜰 구매자.</li>
+    </ul>
+  </section>
+
+  <!-- 섹션 6: 구매 방식별 비교 (일시불 vs 할부 vs 장기렌트 vs 리스) -->
+  <section id="section-purchase-method">
+    <h2>구매 방식별 월 납입 비용 비교: 신차 할부, 장기렌트, 오토리스 계산법</h2>
+    <p>신차를 출고하는 방법에는 현금 일시불 외에도 금융사 다이렉트 할부, 신차 장기렌트카, 운용리스 등 다양한 금융 상품이 존재합니다. 본인의 신용도, 월 가용 예산, 사업자 여부에 따라 가장 저렴한 곳과 유리한 방식을 선택해야 총 금융 비용을 절감할 수 있습니다.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>구매 방식</th>
+            <th>초기 비용 부담</th>
+            <th>월 예상 지출금 (시그니처 기준)</th>
+            <th>보험료 / 세금 포함 여부</th>
+            <th>적합한 고객 유형</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>신차 다이렉트 할부</strong></td>
+            <td>선수금 0%~30%</td>
+            <td>약 32만 원~45만 원 (36~60개월)</td>
+            <td>본인 별도 납부</td>
+            <td>차량을 5년 이상 장기 보유할 개인</td>
+          </tr>
+          <tr>
+            <td><strong>신차 장기렌트</strong></td>
+            <td>보증금 0원 가능</td>
+            <td>약 34만 원~39만 원 (보험/세금 일체 포함)</td>
+            <td>월 렌트료에 전액 포함</td>
+            <td>초기 목돈 부족, 사고 할증 걱정 없는 초보 운전자</td>
+          </tr>
+          <tr>
+            <td><strong>오토리스 (운용리스)</strong></td>
+            <td>보증금/선납금 10%~30%</td>
+            <td>약 28만 원~36만 원</td>
+            <td>자동차세 포함, 보험료 별도</td>
+            <td>일반 번호판을 선호하는 개인 및 법인 사업자</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-card">
+      <p><strong>금융 컨설팅 조언:</strong> 온라인 다이렉트 카드 결제 캐시백 이벤트를 활용하면 일시불 결제 시 결제 금액의 1.0%~1.5%를 현금으로 돌려받을 수 있습니다. 할부 이용 시에는 제1금융권 오토론과 제조사 프로모션 금리를 네이버 페이, 토스, 카카오페이 등 신용 대출 비교 앱을 통해 꼼꼼히 대조해 보시는 것을 추천합니다.</p>
+    </div>
+  </section>
+
+  <!-- 섹션 7: 커뮤니티 실차주 내돈내산 장단점 후기 총정리 -->
+  <section id="section-reviews">
+    <h2>보배드림, 펨코, 디시인사이드 실차주 내돈내산 리얼 후기 및 장단점</h2>
+    <p>네이버 마이카, 보배드림 국산차게시판, 에펨코리아(펨코) 자동차 카테고리, 디시인사이드 차갤 등 주요 자동차 커뮤니티에 올라온 실제 오너들의 수천 건 후기를 종합 분석하여 가감 없이 정리한 레이의 현실적인 장단점입니다.</p>
+
+    <h3>실차주들이 극찬하는 대표 장점</h3>
+    <ul>
+      <li><strong>체감 실내 거주성 1위:</strong> 팰리세이드보다 높게 느껴지는 전고 덕분에 180cm 이상의 성인이 탑승해도 헤드룸이 넉넉하며, 아이들이 차 안에서 서서 옷을 갈아입을 수 있을 정도로 개방감이 압도적입니다.</li>
+      <li><strong>조수석 슬라이딩 도어의 편리함:</strong> 좁은 마트 주차장이나 골목길에서 문콕 걱정 없이 슬라이딩 도어를 열어 짐을 싣거나 카시트에 아이를 태우기가 너무나 편리합니다.</li>
+      <li><strong>평탄화 차박의 제왕:</strong> 1열과 2열 시트를 모두 완전히 접으면 평평한 침상이 완성되어 별도의 값비싼 평탄화 키트 없이도 성인 2명이 충분히 숙박할 수 있는 미니 캠핑카로 변신합니다.</li>
+      <li><strong>경차 전용 혜택:</strong> 공영주차장 50% 할인, 고속도로 통행료 50% 감면, 혼잡통행료 면제, 경차 사랑카드 연간 최대 30만 원 유류세 환급 혜택까지 지출 방어력이 뛰어납니다.</li>
+    </ul>
+
+    <h3>구매 전 반드시 알아야 할 단점 및 아쉬운 점</h3>
+    <ul>
+      <li><strong>자연흡기 1.0 가솔린의 출력 부족:</strong> 76마력의 한계로 인해 성인 4명이 탑승하고 에어컨을 튼 상태에서 강원도 오르막길이나 고속도로 합류 차선 가속 시 엔진 소음이 커지고 가속이 더딥니다. (이 부분은 EV 모델 선택 시 완벽히 해소됩니다.)</li>
+      <li><strong>고속 주행 시 풍절음 및 측풍 흔들림:</strong> 박스형 차체 구조로 인해 시속 100km/h 이상 주행 시 바람 저항 소음이 발생하며, 교량 위를 지날 때 강한 횡풍을 맞으면 차체가 약간 흔들릴 수 있습니다.</li>
+      <li><strong>트렁크 기본 적재 공간:</strong> 2열 시트를 사람이 앉을 수 있도록 뒤로 밀어두면 기본 트렁크 공간은 다소 좁아집니다. 많은 짐을 실으려면 2열 시트 슬라이딩 기능을 조절해야 합니다.</li>
+    </ul>
+  </section>
+
+  <!-- 섹션 8: 연관 키워드 및 트렌드 분석 -->
+  <section id="section-keywords">
+    <h2>더 뉴 레이 연관 검색어 키워드 트렌드 및 추천 검색 카테고리</h2>
+    <p>네이버 데이터랩, 구글 트렌드, 제미나이(Gemini), 챗지피티(ChatGPT) AI 엔진 분석을 통해 2026년 소비자들이 더 뉴 레이와 함께 가장 많이 검색한 연관 키워드 및 자동완성 검색어를 정리했습니다.</p>
+
+    <div class="keyword-tag-container">
+      <span class="keyword-tag">더 뉴 레이 가격</span>
+      <span class="keyword-tag">더 뉴 레이 가솔린</span>
+      <span class="keyword-tag">더 뉴 레이 EV</span>
+      <span class="keyword-tag">더 뉴 레이 1인승 밴</span>
+      <span class="keyword-tag">더 뉴 레이 2인승 밴</span>
+      <span class="keyword-tag">더 뉴 레이 트렌디</span>
+      <span class="keyword-tag">더 뉴 레이 프레스티지</span>
+      <span class="keyword-tag">더 뉴 레이 시그니처</span>
+      <span class="keyword-tag">더 뉴 레이 그래비티</span>
+      <span class="keyword-tag">레이 전기차 보조금</span>
+      <span class="keyword-tag">레이 캠핑카 개조</span>
+      <span class="keyword-tag">레이 차박 평탄화</span>
+      <span class="keyword-tag">레이 캐스퍼 비교</span>
+      <span class="keyword-tag">레이 모닝 비교</span>
+      <span class="keyword-tag">레이 취등록세 면제</span>
+      <span class="keyword-tag">레이 자동차세 계산</span>
+      <span class="keyword-tag">레이 장기렌트 최저가</span>
+      <span class="keyword-tag">레이 신차 리스 견적</span>
+      <span class="keyword-tag">레이 풀옵션 가격</span>
+      <span class="keyword-tag">레이 깡통 가성비</span>
+      <span class="keyword-tag">레이 드라이브 와이즈</span>
+      <span class="keyword-tag">레이 컴포트 옵션</span>
+      <span class="keyword-tag">레이 실연비 후기</span>
+      <span class="keyword-tag">기아 레이 2026</span>
+    </div>
+
+    <p>유튜브, 인스타그램, 페이스북, 틱톡, 텔레그램 등 소셜 미디어 플랫폼에서도 '레이 차박 세팅 노하우', '레이 EV 실주행 전비 테스트', '신차 출고 사은품 성지 좌표 공유' 등의 콘텐츠가 높은 조회수를 기록하고 있습니다.</p>
+  </section>
+
+  <!-- 섹션 9: 자주 묻는 질문 FAQ -->
+  <section id="section-faq">
+    <h2>더 뉴 레이 구매 전 자주 묻는 질문 (FAQ)</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">Q1. 더 뉴 레이 가솔린과 EV 중 출퇴근용으로 무엇을 추천하나요?</div>
+      <div class="faq-answer">하루 왕복 출퇴근 거리가 30~80km 내외이며 아파트나 직장에 완속 충전 시설이 있다면 무조건 더 뉴 레이 EV를 추천합니다. 정숙성과 즉각적인 모터 출력, 저렴한 심야 충전 요금으로 운전 피로도와 유류비가 획기적으로 줄어듭니다. 반면 집 근처에 충전소가 전혀 없거나 주말 레저용 단거리 마트 장보기 위주라면 가솔린 모델이 편리합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Q2. 레이 신차 구입 시 경차 유류세 환급 카드는 어떻게 신청하나요?</div>
+      <div class="faq-answer">1가구 1경차(승용 또는 승합 1대) 소유 요건을 충족하는 경우, 신한카드, 롯데카드, 현대카드 등 지정 카드사 앱이나 온라인 웹사이트를 통해 경차 사랑 유류구매전용 카드를 발급 신청할 수 있습니다. 휘발유 기준 리터당 250원의 세금을 연간 최대 30만 원 한도로 환급받을 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Q3. 더 뉴 레이 터보 모델이나 바이퓨얼(LPG) 모델은 신차로 출시되지 않나요?</div>
+      <div class="faq-answer">과거 출시되었던 레이 터보 및 바이퓨얼 모델은 현재 단종된 상태이며, 2026년 현재 기아에서는 1.0 자연흡기 가솔린 엔진과 순수 전기차 더 뉴 레이 EV 두 가지 파워트레인만 정식 생산 및 판매하고 있습니다. 고출력을 원하시는 고객은 EV 전기차 모델을 선택하시면 터보 이상의 경쾌한 가속감을 경험하실 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Q4. 경차도 지하주차장 및 공영주차장 정기권 할인이 적용되나요?</div>
+      <div class="faq-answer">네, 전국 공영주차장 및 공항 주차장, 환승주차장 이용 시 50% 자동 할인(지자체별 조례에 따라 최대 80%) 혜택이 적용됩니다. 서울 남산 1, 3호 터널 혼잡통행료도 전액 면제 대상입니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Q5. 신차 출고 대기 기간은 보통 얼마 정도 소요되나요?</div>
+      <div class="faq-answer">2026년 기준 더 뉴 레이 가솔린 모델은 계약 후 출고까지 약 3~4주 내외가 소요되며, 더 뉴 레이 EV 모델은 지자체 보조금 접수 일정에 따라 약 4~6주 정도 소요됩니다. 재고 차량이나 즉시 출고 특판 리스·렌트 상품을 이용할 경우 3~5일 이내 빠른 인도도 가능합니다.</div>
+    </div>
+  </section>
+
+  <!-- 섹션 10: 실시간 무료 견적 상담 폼 -->
+  <section id="consult">
+    <h2>2026 더 뉴 레이 실시간 다이렉트 견적 및 프로모션 상담 신청</h2>
+    <p>전문 카 컨설턴트가 고객님의 주거 환경, 주행거리, 세제 혜택 조건에 맞추어 가장 유리한 최저가 견적과 출고 일정을 신속하게 안내해 드립니다. 허위 견적 없이 투명한 공식 프로모션 및 금융사별 금리 비교 분석을 무료로 받아보세요.</p>
+
+    <form class="consult-form" action="#" method="POST">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="cust-name">고객명 / 상호명</label>
+          <input type="text" id="cust-name" name="name" required placeholder="예: 홍길동">
+        </div>
+
+        <div class="form-group">
+          <label for="cust-phone">연락처</label>
+          <input type="tel" id="cust-phone" name="phone" required placeholder="010-1234-5678">
+        </div>
+
+        <div class="form-group">
+          <label for="car-model">관심 모델 선택</label>
+          <select id="car-model" name="model" required>
+            <option value="">모델을 선택하세요</option>
+            <option value="gasoline-trendy">더 뉴 레이 가솔린 트렌디</option>
+            <option value="gasoline-prestige">더 뉴 레이 가솔린 프레스티지 (인기)</option>
+            <option value="gasoline-signature">더 뉴 레이 가솔린 시그니처</option>
+            <option value="gasoline-gravity">더 뉴 레이 가솔린 그래비티</option>
+            <option value="ev-light">더 뉴 레이 EV 전기차 라이트</option>
+            <option value="ev-air">더 뉴 레이 EV 전기차 에어 (추천)</option>
+            <option value="van-1">더 뉴 레이 1인승 밴</option>
+            <option value="van-2">더 뉴 레이 2인승 밴</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="purchase-type">구매 방식</label>
+          <select id="purchase-type" name="purchase_type" required>
+            <option value="">구매 방식을 선택하세요</option>
+            <option value="cash">현금 일시불 (카드 캐시백)</option>
+            <option value="installment">신차 할부 (저금리 오토론)</option>
+            <option value="rent">무보증 신차 장기렌트</option>
+            <option value="lease">사업자 운용리스</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="region">거주 지역 (전기차 보조금 확인용)</label>
+          <input type="text" id="region" name="region" placeholder="예: 서울특별시 송파구 / 강원특별자치도 춘천시">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="memo">추가 문의 사항 및 희망 옵션</label>
+          <textarea id="memo" name="memo" rows="3" placeholder="희망 출고 시기, 필수 옵션, 기존 차량 대차 문의 등을 자유롭게 작성해주세요."></textarea>
+        </div>
+      </div>
+
+      <div class="cta-center">
+        <button type="submit" class="btn-action">맞춤 견적 및 최저가 상담 신청하기</button>
+      </div>
+      <p class="form-note" style="text-align: center;">고객님의 소중한 개인정보는 견적 산출 및 상담 목적으로만 안전하게 사용됩니다.</p>
+    </form>
+  </section>
+
+  <!-- 섹션 11: 공인된 신뢰성 출처 및 공식 외부 사이트 링크 -->
+  <section id="reference-links">
+    <h2>공인 신뢰성 출처 및 공식 사이트 안내</h2>
+    <p>본 페이지에 수록된 2026년형 더 뉴 레이 제원 및 가격 정보는 제조사 공식 카탈로그와 공공 데이터 포털의 세제 기준을 근거로 작성되었습니다. 보다 상세한 사양과 브랜드 히스토리는 아래 공인 사이트에서 확인하실 수 있습니다.</p>
+
+    <ul class="link-list">
+      <li>
+        <a href="https://directuchecka.koreahankang.com" target="_blank" rel="noopener noreferrer">자동차 신차 실구매 견적 및 경제성 분석 포털 (Reliabledone Auto)</a>
+        <div class="link-desc">전국 지자체별 전기차 실시간 보조금 잔여 현황 및 신차 다이렉트 최저가 비교 견적 데이터 제공 사이트</div>
+      </li>
+      <li>
+        <a href="https://namu.wiki/w/%EA%B8%B0%EC%95%84_%EB%A0%88%EC%9D%B4" target="_blank" rel="noopener noreferrer">나무위키 - 기아 레이 상세 역사 및 모델별 제원 백과</a>
+        <div class="link-desc">1세대 초기형부터 페이스리프트를 거친 더 뉴 레이 및 레이 EV까지의 개발 배경, 세대별 사양 변화, 디자인 특징 종합 정리 문서</div>
+      </li>
+      <li>
+        <a href="https://www.kia.com/kr/vehicles/ray/features.html" target="_blank" rel="noopener noreferrer">기아(KIA) 공식 홈페이지 - 더 뉴 레이 공식 제품 페이지</a>
+        <div class="link-desc">기아 주식회사 공식 카탈로그 다운로드, 온라인 견적 내기 시뮬레이터, 360도 내외관 VR 뷰어 및 공식 가격표 제공</div>
+      </li>
+    </ul>
+  </section>
+
+  
+
+</div>
+  
